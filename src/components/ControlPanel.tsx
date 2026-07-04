@@ -6,55 +6,66 @@ import {
   formatAperture,
   formatShutterSpeed,
 } from '../lib/exposure';
+import type { getTranslation } from '../lib/i18n';
 import type { CameraSettings, LearnMode } from '../types';
 import { ExposureMeter } from './ExposureMeter';
+
+type Translation = ReturnType<typeof getTranslation>;
 
 interface ControlPanelProps {
   settings: CameraSettings;
   mode: LearnMode;
+  translation: Translation;
   onChange: (settings: CameraSettings) => void;
 }
 
-export function ControlPanel({ settings, mode, onChange }: ControlPanelProps) {
+export function ControlPanel({ settings, mode, translation, onChange }: ControlPanelProps) {
   const apertureIndex = APERTURE_STOPS.findIndex((value) => value === settings.aperture);
   const shutterIndex = SHUTTER_STOPS.findIndex((stop) => stop.value === settings.shutterSeconds);
   const isoIndex = ISO_STOPS.findIndex((value) => value === settings.iso);
+  const { controls } = translation;
 
   return (
     <Card className="control-card" pattern="default">
       <div className="control-stack">
         <SliderControl
-          label="光圈 Aperture"
+          label={controls.apertureLabel}
           value={formatAperture(settings.aperture)}
           min={0}
           max={APERTURE_STOPS.length - 1}
           step={1}
           index={apertureIndex}
-          description="大光圈让背景更虚，小光圈让远近都更清楚。"
+          description={controls.apertureDescription}
+          stepDownLabel={controls.stepDown}
+          stepUpLabel={controls.stepUp}
           onInput={(index) => onChange({ ...settings, aperture: APERTURE_STOPS[index] })}
         />
         <SliderControl
-          label="快门 Shutter"
+          label={controls.shutterLabel}
           value={formatShutterSpeed(settings.shutterSeconds)}
           min={0}
           max={SHUTTER_STOPS.length - 1}
           step={1}
           index={shutterIndex}
-          description="快门越慢，骑车的曼波本身越容易被拉成运动模糊。"
+          description={controls.shutterDescription}
+          stepDownLabel={controls.stepDown}
+          stepUpLabel={controls.stepUp}
           onInput={(index) => onChange({ ...settings, shutterSeconds: SHUTTER_STOPS[index].value })}
         />
         <SliderControl
-          label="ISO"
+          label={controls.isoLabel}
           value={String(settings.iso)}
           min={0}
           max={ISO_STOPS.length - 1}
           step={1}
           index={isoIndex}
-          description="ISO 越高画面越亮，但噪点也越多。"
+          description={controls.isoDescription}
+          stepDownLabel={controls.stepDown}
+          stepUpLabel={controls.stepUp}
           onInput={(index) => onChange({ ...settings, iso: ISO_STOPS[index] })}
         />
-        <ExposureMeter settings={settings} />
-        <p className="lesson-copy">{buildLessonCopy(settings, mode)}</p>
+        <ExposureMeter settings={settings} translation={translation} />
+        <p className="lesson-copy">{buildLessonCopy(settings, mode, translation)}</p>
       </div>
     </Card>
   );
@@ -68,6 +79,8 @@ interface SliderControlProps {
   step: number;
   index: number;
   description: string;
+  stepDownLabel: string;
+  stepUpLabel: string;
   onInput: (index: number) => void;
 }
 
@@ -79,6 +92,8 @@ function SliderControl({
   step,
   index,
   description,
+  stepDownLabel,
+  stepUpLabel,
   onInput,
 }: SliderControlProps) {
   const canStepDown = index > min;
@@ -96,7 +111,7 @@ function SliderControl({
           size="small"
           htmlType="button"
           disabled={!canStepDown}
-          aria-label={`${label} 减少一档`}
+          aria-label={`${label} ${stepDownLabel}`}
           onClick={() => onInput(Math.max(min, index - step))}
         >
           -
@@ -114,7 +129,7 @@ function SliderControl({
           size="small"
           htmlType="button"
           disabled={!canStepUp}
-          aria-label={`${label} 增加一档`}
+          aria-label={`${label} ${stepUpLabel}`}
           onClick={() => onInput(Math.min(max, index + step))}
         >
           +
@@ -125,22 +140,22 @@ function SliderControl({
   );
 }
 
-function buildLessonCopy(settings: CameraSettings, mode: LearnMode) {
+function buildLessonCopy(settings: CameraSettings, mode: LearnMode, translation: Translation) {
   if (mode === 'exposure') {
-    return '学习曝光模式会把光圈、快门和 ISO 一起计入亮度，观察曝光条如何随着三者联动移动。';
+    return translation.lessons.exposureMode;
   }
 
   if (settings.aperture <= 2.8) {
-    return '当前大光圈让背景明显虚化，静止的曼波会更突出。';
+    return translation.lessons.wideAperture;
   }
 
   if (settings.shutterSeconds >= 1 / 30) {
-    return '当前快门偏慢，骑车的曼波会出现横向运动模糊。';
+    return translation.lessons.slowShutter;
   }
 
   if (settings.iso >= 3200) {
-    return '当前 ISO 偏高，画面更亮，同时能看到更明显的噪点。';
+    return translation.lessons.highIso;
   }
 
-  return '拖动三个参数，分别观察背景虚化、人物运动模糊和噪点变化。';
+  return translation.lessons.default;
 }

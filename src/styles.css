@@ -48,6 +48,30 @@ input {
   font-weight: 700;
 }
 
+.language-select {
+  display: inline-grid;
+  gap: 6px;
+  color: #65472f;
+  font-weight: 900;
+}
+
+.language-select span {
+  font-size: 13px;
+  text-align: right;
+}
+
+.language-select select {
+  min-width: 132px;
+  min-height: 42px;
+  border: 2px solid #a69073;
+  border-radius: 8px;
+  background: #fff9df;
+  color: #5e432b;
+  cursor: pointer;
+  font-weight: 900;
+  padding: 6px 34px 6px 12px;
+}
+
 .mode-row {
   display: flex;
   justify-content: center;
@@ -319,6 +343,15 @@ input {
   .hero {
     align-items: flex-start;
     flex-direction: column;
+  }
+
+  .language-select,
+  .language-select select {
+    width: 100%;
+  }
+
+  .language-select span {
+    text-align: left;
   }
 
   .hero p {

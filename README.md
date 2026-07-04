@@ -9,6 +9,7 @@
 - ISO 模拟：高 ISO 会提高画面亮度，同时增加噪点。
 - 曝光指示：通过 EV 数值和曝光条展示欠曝、正常曝光、过曝状态。
 - 双学习模式：支持观察视觉效果，也支持观察三参数共同影响曝光。
+- 中日韩语言选项：界面文案支持中文、日文、韩文切换。
 - 素材化场景：背景、静止曼波、骑车曼波都从 `public/assets/` 加载，方便后续替换。
 
 ## 技术栈
@@ -50,7 +51,15 @@ npm run preview   # 预览生产构建
 - `manbo.png`：静止主体
 - `manbo_bike_2.png`：骑车主体
 
-原始生成素材仍保留在项目根目录，方便继续迭代或重新导出。运行时如果主素材缺失，Canvas 会使用备用绘制方案，避免页面直接空白。
+原始生成素材仍保留在项目根目录，方便继续迭代或重新导出：
+
+- `background-source.png`
+- `generated-scene-2026-07-04-184109.png`
+- `manbo-static-source.png`
+- `manbo-bike-source.png`
+- `manbo-bike-alt-source.png`
+
+运行时如果主素材缺失，Canvas 会使用备用绘制方案，避免页面直接空白。
 
 ## 目录结构
 
@@ -66,6 +75,7 @@ src/
     assetLoader.ts                素材路径与加载容错
     canvasRenderer.ts             Canvas 场景绘制和视觉效果
     exposure.ts                   曝光计算与效果参数映射
+    i18n.ts                       中日韩界面文案
 ```
 
 ## 测试覆盖
@@ -78,6 +88,7 @@ src/
 - 快门拖影和动感模糊参数映射
 - ISO 噪点映射
 - 主画面素材路径
+- 中日韩核心界面文案
 
 运行：
 
