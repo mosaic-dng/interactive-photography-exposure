@@ -1,6 +1,6 @@
 import type { ExposureStatusLevel } from './exposure';
 
-export type LanguageCode = 'zh' | 'ja' | 'ko';
+export type LanguageCode = 'zh' | 'ja' | 'ko' | 'en';
 
 interface Translation {
   languageLabel: string;
@@ -47,11 +47,12 @@ export const LANGUAGES: Array<{ code: LanguageCode; label: string }> = [
   { code: 'zh', label: '中文' },
   { code: 'ja', label: '日本語' },
   { code: 'ko', label: '한국어' },
+  { code: 'en', label: 'English' },
 ];
 
 const TRANSLATIONS: Record<LanguageCode, Translation> = {
   zh: {
-    languageLabel: '语言',
+    languageLabel: 'Language',
     appTitle: '摄影大学习',
     appSubtitle: '拖动光圈、快门、ISO，看懂曝光三要素',
     workspaceLabel: '摄影曝光可视化工具',
@@ -109,7 +110,7 @@ const TRANSLATIONS: Record<LanguageCode, Translation> = {
     },
   },
   ja: {
-    languageLabel: '言語',
+    languageLabel: 'Language',
     appTitle: '写真を学ぼう',
     appSubtitle: '絞り、シャッター速度、ISOを動かして露出の三要素を理解しよう',
     workspaceLabel: '写真露出ビジュアライザー',
@@ -167,7 +168,7 @@ const TRANSLATIONS: Record<LanguageCode, Translation> = {
     },
   },
   ko: {
-    languageLabel: '언어',
+    languageLabel: 'Language',
     appTitle: '사진 배우기',
     appSubtitle: '조리개, 셔터 속도, ISO를 움직이며 노출의 세 요소를 익혀 보세요',
     workspaceLabel: '사진 노출 시각화 도구',
@@ -221,6 +222,64 @@ const TRANSLATIONS: Record<LanguageCode, Translation> = {
       'severe-over': {
         label: '심한 노출 과다',
         hint: '화면이 하얗게 뜨고 밝은 부분의 세부가 사라지기 쉽습니다.',
+      },
+    },
+  },
+  en: {
+    languageLabel: 'Language',
+    appTitle: 'Learn Photography',
+    appSubtitle: 'Move aperture, shutter speed, and ISO to understand the exposure triangle',
+    workspaceLabel: 'Photography exposure visualizer',
+    currentParameters: 'Current Settings',
+    modes: {
+      ariaLabel: 'Learning mode switch',
+      effects: 'Learn Effects',
+      exposure: 'Learn Exposure',
+    },
+    controls: {
+      apertureLabel: 'Aperture',
+      apertureDescription: 'A wider aperture makes the background blurrier. A smaller aperture keeps more of the scene sharp.',
+      shutterLabel: 'Shutter',
+      shutterDescription: 'A slower shutter makes the cycling Manbo stretch into motion blur.',
+      isoLabel: 'ISO',
+      isoDescription: 'Higher ISO makes the image brighter, but it also adds more noise.',
+      stepDown: 'decrease one stop',
+      stepUp: 'increase one stop',
+    },
+    meter: {
+      ariaLabel: 'Exposure status',
+      title: 'Exposure Meter',
+      under: 'Under',
+      normal: 'Good',
+      over: 'Over',
+    },
+    lessons: {
+      exposureMode: 'Learn Exposure mode combines aperture, shutter speed, and ISO into brightness, so you can watch the meter move as the three settings interact.',
+      wideAperture: 'The current wide aperture makes the background blur strongly, helping the still Manbo stand out.',
+      slowShutter: 'The current shutter is slow, so the cycling Manbo shows horizontal motion blur.',
+      highIso: 'The current ISO is high, making the image brighter while adding more visible noise.',
+      default: 'Move the three settings to compare background blur, subject motion blur, and noise.',
+    },
+    exposureStatus: {
+      'severe-under': {
+        label: 'Severely Underexposed',
+        hint: 'The image will look very dark, and details can sink into the shadows.',
+      },
+      under: {
+        label: 'Underexposed',
+        hint: 'The image is dark. Try slowing the shutter, opening the aperture, or raising ISO.',
+      },
+      normal: {
+        label: 'Good Exposure',
+        hint: 'The overall brightness is comfortable, making it easier to study the balance between the three settings.',
+      },
+      over: {
+        label: 'Overexposed',
+        hint: 'The image is bright. Try stopping down, using a faster shutter, or lowering ISO.',
+      },
+      'severe-over': {
+        label: 'Severely Overexposed',
+        hint: 'The image will look washed out, and highlight detail can disappear.',
       },
     },
   },

@@ -9,7 +9,7 @@ This project is a Vite + React + TypeScript single-page learning tool for photog
 - ISO changes brightness and noise.
 - The exposure meter shows EV offset and exposure status.
 - Users can switch between effect learning and exposure learning modes.
-- The interface supports Chinese, Japanese, and Korean.
+- The interface supports Chinese, Japanese, Korean, and English.
 
 The current product name shown in Chinese is `摄影大学习`.
 
@@ -46,7 +46,7 @@ src/
 
 - `mode`: `effects` or `exposure`
 - `settings`: aperture, shutter speed, ISO
-- `language`: `zh`, `ja`, or `ko`
+- `language`: `zh`, `ja`, `ko`, or `en`
 
 The selected language is resolved through `getTranslation(language)` in `src/lib/i18n.ts`, then passed into the mode switch, control panel, and exposure meter. Exposure math remains in `src/lib/exposure.ts` so it can stay independent from UI language.
 
@@ -59,8 +59,9 @@ The language options are defined in `src/lib/i18n.ts`:
 - `zh`: Chinese
 - `ja`: Japanese
 - `ko`: Korean
+- `en`: English
 
-When adding or editing interface copy, update the translation object for all three languages and extend `src/lib/i18n.test.ts` if the copy is part of a core workflow.
+When adding or editing interface copy, update the translation object for all four languages and extend `src/lib/i18n.test.ts` if the copy is part of a core workflow.
 
 ## Assets
 
