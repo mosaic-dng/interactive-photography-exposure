@@ -17,16 +17,18 @@ export const SCENE_SUBJECT_LAYOUT = {
       width: 292,
       height: 430,
     },
+    visibleBottomBaseline: 0.945,
     shadowBaseline: 0.98,
   },
   cycling: {
     box: {
       x: 590,
-      y: 209,
+      y: 323,
       width: 500,
       height: 486,
     },
-    shadowBaseline: 0.91,
+    visibleBottomBaseline: 0.644,
+    shadowBaseline: 0.673,
   },
 } as const;
 
