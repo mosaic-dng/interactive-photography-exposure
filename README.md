@@ -293,3 +293,9 @@ The production build is generated in `dist/`, which is not committed to Git.
 - Improve mobile experience
 - Add clearer learning guidance
 - Add more interactive exercises
+
+## 致谢 / Acknowledgements
+
+感谢 [LINUX DO](https://linux.do/) 社区提供的公益 API 支持。
+
+Thanks to the [LINUX DO](https://linux.do/) community for providing public-interest API support.
