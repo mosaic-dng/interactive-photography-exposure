@@ -9,6 +9,27 @@ import {
 export const CANVAS_WIDTH = 1280;
 export const CANVAS_HEIGHT = 720;
 
+export const SCENE_SUBJECT_LAYOUT = {
+  standing: {
+    box: {
+      x: 252,
+      y: 230,
+      width: 292,
+      height: 430,
+    },
+    shadowBaseline: 0.98,
+  },
+  cycling: {
+    box: {
+      x: 590,
+      y: 209,
+      width: 500,
+      height: 486,
+    },
+    shadowBaseline: 0.91,
+  },
+} as const;
+
 interface RenderOptions {
   assets: SceneAssets;
   mode: LearnMode;
@@ -362,14 +383,15 @@ function drawStaticManbo(ctx: CanvasRenderingContext2D, image?: HTMLImageElement
     return;
   }
 
-  const box = {
-    x: 252,
-    y: 230,
-    width: 292,
-    height: 430,
-  };
+  const { box, shadowBaseline } = SCENE_SUBJECT_LAYOUT.standing;
 
-  drawSoftShadow(ctx, box.x + box.width * 0.5, box.y + box.height * 0.98, box.width * 0.28, 12);
+  drawSoftShadow(
+    ctx,
+    box.x + box.width * 0.5,
+    box.y + box.height * shadowBaseline,
+    box.width * 0.28,
+    12,
+  );
   drawContainedImage(ctx, image, box.x, box.y, box.width, box.height);
 }
 
@@ -378,12 +400,7 @@ function drawCyclingManboWithMotionBlur(
   image: HTMLImageElement | undefined,
   shutterSeconds: number,
 ) {
-  const box = {
-    x: 590,
-    y: 184,
-    width: 500,
-    height: 486,
-  };
+  const { box, shadowBaseline } = SCENE_SUBJECT_LAYOUT.cycling;
   const source = image
     ? {
         x: 0,
@@ -399,7 +416,13 @@ function drawCyclingManboWithMotionBlur(
       return;
     }
 
-    drawSoftShadow(target, x + box.width * 0.54, y + box.height * 0.91, box.width * 0.3, 13);
+    drawSoftShadow(
+      target,
+      x + box.width * 0.54,
+      y + box.height * shadowBaseline,
+      box.width * 0.3,
+      13,
+    );
     drawCroppedContainedImage(target, image, source!, x, y, box.width, box.height);
   };
 
