@@ -6,12 +6,12 @@ dist/
 .env*
 *.local
 
-assets/
-docs/
+/assets/
+/docs/
 
-background-source.png
-generated-scene-*.png
-manbo-*-source.png
+/background-source.png
+/generated-scene-*.png
+/manbo-*-source.png
 
-interactive-photography-exposure*.gif
-interactive-photography-exposure*.mp4
+/interactive-photography-exposure*.gif
+/interactive-photography-exposure*.mp4
