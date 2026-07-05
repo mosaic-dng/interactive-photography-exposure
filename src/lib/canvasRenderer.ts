@@ -12,20 +12,20 @@ export const CANVAS_HEIGHT = 720;
 export const SCENE_SUBJECT_LAYOUT = {
   standing: {
     box: {
-      x: 252,
-      y: 230,
-      width: 292,
-      height: 430,
+      x: 264,
+      y: 263,
+      width: 268,
+      height: 395,
     },
     visibleBottomBaseline: 0.945,
     shadowBaseline: 0.98,
   },
   cycling: {
     box: {
-      x: 590,
-      y: 323,
-      width: 500,
-      height: 486,
+      x: 560,
+      y: 286,
+      width: 560,
+      height: 544,
     },
     visibleBottomBaseline: 0.644,
     shadowBaseline: 0.673,
