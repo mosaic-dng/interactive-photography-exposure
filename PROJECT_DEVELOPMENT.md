@@ -133,4 +133,4 @@ Before publishing changes:
 
 Remote repository:
 
-[https://github.com/mosaic-dng/photography-learning](https://github.com/mosaic-dng/photography-learning)
+[https://github.com/mosaic-dng/interactive-photography-exposure](https://github.com/mosaic-dng/interactive-photography-exposure)

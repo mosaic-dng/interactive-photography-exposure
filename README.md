@@ -1,6 +1,20 @@
 # 互动式摄影曝光学习工具
 
+阅读语言 / Read in: [中文](#中文说明) | [English](#english-readme)
+
+## 关于 / About
+
+中文：曝光三要素可视化工具是一个通过网页交互帮助摄影初学者理解光圈、快门速度与 ISO 关系的学习项目。
+
+English: Interactive Photography Exposure Learning Tool is a visual web app that helps photography beginners understand aperture, shutter speed, and ISO through direct interaction.
+
+<a id="中文说明"></a>
+
+## 中文说明
+
 一个通过网页交互帮助摄影初学者理解光圈、快门速度与 ISO 关系的可视化学习项目。
+
+GitHub 仓库：[https://github.com/mosaic-dng/interactive-photography-exposure](https://github.com/mosaic-dng/interactive-photography-exposure)
 
 ## 在线体验
 
@@ -138,9 +152,13 @@ npm run build
 
 ---
 
+<a id="english-readme"></a>
+
 # Interactive Photography Exposure Learning Tool
 
 A visual and interactive web project that helps photography beginners understand the relationship between aperture, shutter speed, and ISO.
+
+GitHub Repository: [https://github.com/mosaic-dng/interactive-photography-exposure](https://github.com/mosaic-dng/interactive-photography-exposure)
 
 ## Live Demo
 
