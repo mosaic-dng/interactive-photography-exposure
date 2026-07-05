@@ -32,8 +32,17 @@ export function ExposureMeter({ settings, translation }: ExposureMeterProps) {
           {statusCopy.label}
         </Tag>
       </div>
-      <div className="meter-value">EV {ev >= 0 ? '+' : ''}{ev.toFixed(2)}</div>
-      <div className="meter-track" role="meter" aria-valuemin={-4} aria-valuemax={4} aria-valuenow={ev}>
+      <div className="meter-value">
+        EV {ev >= 0 ? '+' : ''}
+        {ev.toFixed(2)}
+      </div>
+      <div
+        className="meter-track"
+        role="meter"
+        aria-valuemin={-4}
+        aria-valuemax={4}
+        aria-valuenow={ev}
+      >
         <span className="meter-zone under">{translation.meter.under}</span>
         <span className="meter-zone normal">{translation.meter.normal}</span>
         <span className="meter-zone over">{translation.meter.over}</span>

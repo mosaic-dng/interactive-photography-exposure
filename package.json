@@ -1,7 +1,8 @@
 {
-  "name": "hakimi-photo-exposure-tool",
+  "name": "interactive-photography-exposure",
   "private": true,
   "version": "0.1.0",
+  "description": "Interactive Photography Exposure Learning Tool",
   "type": "module",
   "scripts": {
     "dev": "vite",

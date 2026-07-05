@@ -41,11 +41,21 @@ input {
   margin-bottom: 18px;
 }
 
+.hero > div {
+  min-width: 0;
+}
+
 .hero p {
   margin: 12px 0 0;
   color: #6d573d;
   font-size: 18px;
   font-weight: 700;
+}
+
+.hero h1,
+.hero [class*="title"] {
+  max-width: 100%;
+  overflow-wrap: anywhere;
 }
 
 .language-select {
@@ -246,6 +256,7 @@ input {
   align-items: center;
   justify-content: space-between;
   gap: 12px;
+  flex-wrap: wrap;
 }
 
 .meter-title {
@@ -345,6 +356,10 @@ input {
     flex-direction: column;
   }
 
+  .hero > div {
+    width: 100%;
+  }
+
   .language-select,
   .language-select select {
     width: 100%;
@@ -356,6 +371,13 @@ input {
 
   .hero p {
     font-size: 15px;
+  }
+
+  .hero h1,
+  .hero [class*="title"] {
+    display: block;
+    overflow: hidden;
+    line-height: 1.16;
   }
 
   .mode-switch {
@@ -383,6 +405,15 @@ input {
     font-size: 13px;
     min-height: 28px;
     padding-inline: 9px;
+  }
+
+  .range-row {
+    grid-template-columns: 40px minmax(0, 1fr) 40px;
+    gap: 8px;
+  }
+
+  .range-row button {
+    min-width: 40px;
   }
 
   .slider-row {

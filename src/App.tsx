@@ -22,14 +22,18 @@ export default function App() {
     <main className="app-shell">
       <header className="hero">
         <div>
-          <Title size="large" color="app-green">{t.appTitle}</Title>
+          <Title size="large" color="app-green">
+            {t.appTitle}
+          </Title>
           <p>{t.appSubtitle}</p>
         </div>
         <label className="language-select">
           <span>{t.languageLabel}</span>
           <select
             value={language}
-            onChange={(event) => setLanguage(event.currentTarget.value as LanguageCode)}
+            onChange={(event) =>
+              setLanguage(event.currentTarget.value as LanguageCode)
+            }
           >
             {LANGUAGES.map((item) => (
               <option key={item.code} value={item.code}>
@@ -50,11 +54,20 @@ export default function App() {
           <Card className="parameter-card" type="dashed">
             <span>{t.currentParameters}</span>
             <strong>f/{settings.aperture}</strong>
-            <strong>{settings.shutterSeconds >= 1 ? `${settings.shutterSeconds}s` : `1/${Math.round(1 / settings.shutterSeconds)}s`}</strong>
+            <strong>
+              {settings.shutterSeconds >= 1
+                ? `${settings.shutterSeconds}s`
+                : `1/${Math.round(1 / settings.shutterSeconds)}s`}
+            </strong>
             <strong>ISO {settings.iso}</strong>
           </Card>
         </div>
-        <ControlPanel settings={settings} mode={mode} translation={t} onChange={setSettings} />
+        <ControlPanel
+          settings={settings}
+          mode={mode}
+          translation={t}
+          onChange={setSettings}
+        />
       </section>
 
     </main>

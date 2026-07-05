@@ -1,4 +1,4 @@
-# Photography Learning Exposure Tool
+# Interactive Photography Exposure Learning Tool
 
 ## Project Overview
 
@@ -11,7 +11,7 @@ This project is a Vite + React + TypeScript single-page learning tool for photog
 - Users can switch between effect learning and exposure learning modes.
 - The interface supports Chinese, Japanese, Korean, and English.
 
-The current product name shown in Chinese is `摄影大学习`.
+The current product name shown in Chinese is `互动式摄影曝光学习工具`.
 
 ## Current Stack
 

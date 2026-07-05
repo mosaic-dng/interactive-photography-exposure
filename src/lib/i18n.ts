@@ -53,9 +53,9 @@ export const LANGUAGES: Array<{ code: LanguageCode; label: string }> = [
 const TRANSLATIONS: Record<LanguageCode, Translation> = {
   zh: {
     languageLabel: 'Language',
-    appTitle: '摄影大学习',
-    appSubtitle: '拖动光圈、快门、ISO，看懂曝光三要素',
-    workspaceLabel: '摄影曝光可视化工具',
+    appTitle: '互动式摄影曝光学习工具',
+    appSubtitle: '通过网页交互理解光圈、快门与 ISO 的关系',
+    workspaceLabel: '互动式摄影曝光学习工具',
     currentParameters: '当前参数',
     modes: {
       ariaLabel: '学习模式切换',
@@ -227,9 +227,9 @@ const TRANSLATIONS: Record<LanguageCode, Translation> = {
   },
   en: {
     languageLabel: 'Language',
-    appTitle: 'Learn Photography',
-    appSubtitle: 'Move aperture, shutter speed, and ISO to understand the exposure triangle',
-    workspaceLabel: 'Photography exposure visualizer',
+    appTitle: 'Interactive Photography Exposure Learning Tool',
+    appSubtitle: 'Understand aperture, shutter speed, and ISO through web interaction',
+    workspaceLabel: 'Interactive Photography Exposure Learning Tool',
     currentParameters: 'Current Settings',
     modes: {
       ariaLabel: 'Learning mode switch',

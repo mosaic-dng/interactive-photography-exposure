@@ -14,10 +14,12 @@ describe('i18n translations', () => {
   });
 
   it('localizes the core app title and mode labels', () => {
-    expect(getTranslation('zh').appTitle).toBe('摄影大学习');
+    expect(getTranslation('zh').appTitle).toBe('互动式摄影曝光学习工具');
     expect(getTranslation('ja').appTitle).toBe('写真を学ぼう');
     expect(getTranslation('ko').appTitle).toBe('사진 배우기');
-    expect(getTranslation('en').appTitle).toBe('Learn Photography');
+    expect(getTranslation('en').appTitle).toBe(
+      'Interactive Photography Exposure Learning Tool',
+    );
 
     expect(getTranslation('ja').modes.effects).toBe('効果を学ぶ');
     expect(getTranslation('ko').modes.exposure).toBe('노출 배우기');
