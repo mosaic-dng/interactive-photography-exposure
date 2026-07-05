@@ -4,7 +4,7 @@
 
 ## 在线体验
 
-Vercel Demo：待添加
+Vercel Demo：[https://interactive-photography-exposure.vercel.app](https://interactive-photography-exposure.vercel.app)
 
 ## 项目预览
 
@@ -144,7 +144,7 @@ A visual and interactive web project that helps photography beginners understand
 
 ## Live Demo
 
-Vercel Demo: To be added
+Vercel Demo: [https://interactive-photography-exposure.vercel.app](https://interactive-photography-exposure.vercel.app)
 
 ## Preview
 
