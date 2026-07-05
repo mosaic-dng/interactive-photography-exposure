@@ -11,7 +11,7 @@ interface ExposureCanvasProps {
 
 export function ExposureCanvas({ canvasLabel, mode, settings }: ExposureCanvasProps) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
-  const [assets, setAssets] = useState<SceneAssets>({});
+  const [assets, setAssets] = useState<SceneAssets | null>(null);
 
   useEffect(() => {
     let isMounted = true;
@@ -30,7 +30,7 @@ export function ExposureCanvas({ canvasLabel, mode, settings }: ExposureCanvasPr
   useEffect(() => {
     const canvas = canvasRef.current;
     const context = canvas?.getContext('2d');
-    if (!canvas || !context) return;
+    if (!canvas || !context || !shouldRenderExposureScene(assets)) return;
 
     renderExposureScene(context, { assets, mode, settings });
   }, [assets, mode, settings]);
@@ -40,4 +40,8 @@ export function ExposureCanvas({ canvasLabel, mode, settings }: ExposureCanvasPr
       <canvas ref={canvasRef} width={CANVAS_WIDTH} height={CANVAS_HEIGHT} />
     </div>
   );
+}
+
+export function shouldRenderExposureScene(assets: SceneAssets | null): assets is SceneAssets {
+  return assets !== null;
 }
