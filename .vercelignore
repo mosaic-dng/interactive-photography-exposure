@@ -1,0 +1,17 @@
+node_modules/
+dist/
+.git/
+.DS_Store
+
+.env*
+*.local
+
+assets/
+docs/
+
+background-source.png
+generated-scene-*.png
+manbo-*-source.png
+
+interactive-photography-exposure*.gif
+interactive-photography-exposure*.mp4
