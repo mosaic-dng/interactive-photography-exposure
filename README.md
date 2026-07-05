@@ -22,7 +22,7 @@ Vercel Demo：[https://interactive-photography-exposure.vercel.app](https://inte
 
 ## 项目预览
 
-> 暂未添加截图，后续可在 `docs/preview.png` 中放置项目截图。
+![互动式摄影曝光学习工具项目预览](docs/preview.gif)
 
 ## 项目简介
 
@@ -166,7 +166,7 @@ Vercel Demo: [https://interactive-photography-exposure.vercel.app](https://inter
 
 ## Preview
 
-> No preview image yet. A screenshot can be added later at `docs/preview.png`.
+![Interactive Photography Exposure Learning Tool preview](docs/preview.gif)
 
 ## Overview
 
