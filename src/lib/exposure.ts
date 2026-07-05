@@ -152,7 +152,7 @@ export function getShutterMotionBlurSettings(
     return {
       sampleCount: 14,
       blurDistance: 54,
-      alpha: 0.1,
+      alpha: 0.145,
       trailCount: 4,
       trailAlpha: 0.11,
       dynamicBlur: 2.1,
@@ -163,7 +163,7 @@ export function getShutterMotionBlurSettings(
     return {
       sampleCount: 20,
       blurDistance: 86,
-      alpha: 0.072,
+      alpha: 0.115,
       trailCount: 5,
       trailAlpha: 0.14,
       dynamicBlur: 3.1,
@@ -174,7 +174,7 @@ export function getShutterMotionBlurSettings(
     return {
       sampleCount: 26,
       blurDistance: 118,
-      alpha: 0.052,
+      alpha: 0.092,
       trailCount: 7,
       trailAlpha: 0.17,
       dynamicBlur: 4.2,
@@ -184,7 +184,7 @@ export function getShutterMotionBlurSettings(
   return {
     sampleCount: 34,
     blurDistance: 164,
-    alpha: 0.04,
+    alpha: 0.074,
     trailCount: 9,
     trailAlpha: 0.2,
     dynamicBlur: 5.4,

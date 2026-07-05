@@ -67,6 +67,13 @@ describe('visual effect mappings', () => {
     expect((slow as typeof slow & { dynamicBlur: number }).dynamicBlur).toBeGreaterThan(0);
   });
 
+  it('keeps the cycling subject visible when shutter blur is strong', () => {
+    expect(getShutterMotionBlurSettings(1 / 30).alpha).toBeGreaterThanOrEqual(0.14);
+    expect(getShutterMotionBlurSettings(1 / 15).alpha).toBeGreaterThanOrEqual(0.11);
+    expect(getShutterMotionBlurSettings(1 / 8).alpha).toBeGreaterThanOrEqual(0.09);
+    expect(getShutterMotionBlurSettings(1).alpha).toBeGreaterThanOrEqual(0.07);
+  });
+
   it('increases ISO noise and brightness lift as ISO rises', () => {
     expect(getIsoNoiseSettings(12800).alpha).toBeGreaterThan(
       getIsoNoiseSettings(100).alpha,
