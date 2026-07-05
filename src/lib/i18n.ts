@@ -6,6 +6,7 @@ interface Translation {
   languageLabel: string;
   appTitle: string;
   appSubtitle: string;
+  canvasLabel: string;
   workspaceLabel: string;
   currentParameters: string;
   modes: {
@@ -55,6 +56,7 @@ const TRANSLATIONS: Record<LanguageCode, Translation> = {
     languageLabel: 'Language',
     appTitle: '互动式摄影曝光学习工具',
     appSubtitle: '通过网页交互理解光圈、快门与 ISO 的关系',
+    canvasLabel: '曝光三要素 Canvas 预览',
     workspaceLabel: '互动式摄影曝光学习工具',
     currentParameters: '当前参数',
     modes: {
@@ -113,6 +115,7 @@ const TRANSLATIONS: Record<LanguageCode, Translation> = {
     languageLabel: 'Language',
     appTitle: '写真を学ぼう',
     appSubtitle: '絞り、シャッター速度、ISOを動かして露出の三要素を理解しよう',
+    canvasLabel: '露出三要素のCanvasプレビュー',
     workspaceLabel: '写真露出ビジュアライザー',
     currentParameters: '現在の設定',
     modes: {
@@ -171,6 +174,7 @@ const TRANSLATIONS: Record<LanguageCode, Translation> = {
     languageLabel: 'Language',
     appTitle: '사진 배우기',
     appSubtitle: '조리개, 셔터 속도, ISO를 움직이며 노출의 세 요소를 익혀 보세요',
+    canvasLabel: '노출 세 요소 Canvas 미리보기',
     workspaceLabel: '사진 노출 시각화 도구',
     currentParameters: '현재 설정',
     modes: {
@@ -229,6 +233,7 @@ const TRANSLATIONS: Record<LanguageCode, Translation> = {
     languageLabel: 'Language',
     appTitle: 'Interactive Photography Exposure Learning Tool',
     appSubtitle: 'Understand aperture, shutter speed, and ISO through web interaction',
+    canvasLabel: 'Exposure triangle canvas preview',
     workspaceLabel: 'Interactive Photography Exposure Learning Tool',
     currentParameters: 'Current Settings',
     modes: {

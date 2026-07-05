@@ -9,7 +9,6 @@ export interface CameraSettings {
 export type AssetKey =
   | 'background'
   | 'boyStatic'
-  | 'girlBike'
-  | 'referenceImage';
+  | 'girlBike';
 
 export type SceneAssets = Partial<Record<AssetKey, HTMLImageElement>>;

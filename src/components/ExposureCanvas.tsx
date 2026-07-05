@@ -4,11 +4,12 @@ import { CANVAS_HEIGHT, CANVAS_WIDTH, renderExposureScene } from '../lib/canvasR
 import { loadSceneAssets } from '../lib/assetLoader';
 
 interface ExposureCanvasProps {
+  canvasLabel: string;
   mode: LearnMode;
   settings: CameraSettings;
 }
 
-export function ExposureCanvas({ mode, settings }: ExposureCanvasProps) {
+export function ExposureCanvas({ canvasLabel, mode, settings }: ExposureCanvasProps) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const [assets, setAssets] = useState<SceneAssets>({});
 
@@ -35,7 +36,7 @@ export function ExposureCanvas({ mode, settings }: ExposureCanvasProps) {
   }, [assets, mode, settings]);
 
   return (
-    <div className="canvas-wrap" aria-label="曝光三要素 Canvas 预览">
+    <div className="canvas-wrap" aria-label={canvasLabel}>
       <canvas ref={canvasRef} width={CANVAS_WIDTH} height={CANVAS_HEIGHT} />
     </div>
   );

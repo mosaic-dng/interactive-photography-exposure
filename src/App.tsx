@@ -21,10 +21,13 @@ export default function App() {
   return (
     <main className="app-shell">
       <header className="hero">
-        <div>
-          <Title size="large" color="app-green">
-            {t.appTitle}
-          </Title>
+        <div className="hero-copy">
+          <div className="desktop-title">
+            <Title size="large" color="app-green">
+              {t.appTitle}
+            </Title>
+          </div>
+          <h1 className="mobile-app-title">{t.appTitle}</h1>
           <p>{t.appSubtitle}</p>
         </div>
         <label className="language-select">
@@ -50,7 +53,11 @@ export default function App() {
 
       <section className="workspace" aria-label={t.workspaceLabel}>
         <div className="preview-column">
-          <ExposureCanvas mode={mode} settings={settings} />
+          <ExposureCanvas
+            canvasLabel={t.canvasLabel}
+            mode={mode}
+            settings={settings}
+          />
           <Card className="parameter-card" type="dashed">
             <span>{t.currentParameters}</span>
             <strong>f/{settings.aperture}</strong>

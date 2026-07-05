@@ -205,3 +205,7 @@ export function getIsoNoiseSettings(iso: number): IsoNoiseSettings {
 export function clampEVForMeter(ev: number) {
   return Math.max(-4, Math.min(4, ev));
 }
+
+export function getMeterAriaValue(ev: number) {
+  return clampEVForMeter(ev);
+}

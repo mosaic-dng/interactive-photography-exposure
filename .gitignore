@@ -1,14 +1,19 @@
 node_modules/
 dist/
 .DS_Store
+
+# Local environment files
+.env*
 *.local
-.env
-.env.*
 !.env.example
+
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 .vercel
-.env*
+
+# Local capture/export artifacts
 /interactive-photography-exposure.gif
+/interactive-photography-exposure_*.gif
+/interactive-photography-exposure*.mp4

@@ -9,4 +9,12 @@ describe('scene asset paths', () => {
       girlBike: '/assets/manbo_bike_2.png',
     });
   });
+
+  it('only loads runtime assets that are rendered on the main canvas', () => {
+    expect(Object.keys(ASSET_PATHS).sort()).toEqual([
+      'background',
+      'boyStatic',
+      'girlBike',
+    ]);
+  });
 });

@@ -32,4 +32,11 @@ describe('i18n translations', () => {
     expect(getTranslation('ko').exposureStatus.normal.label).toBe('적정 노출');
     expect(getTranslation('en').exposureStatus.normal.label).toBe('Good Exposure');
   });
+
+  it('localizes the canvas preview label for assistive technology', () => {
+    expect(getTranslation('zh').canvasLabel).toBe('曝光三要素 Canvas 预览');
+    expect(getTranslation('ja').canvasLabel).toBe('露出三要素のCanvasプレビュー');
+    expect(getTranslation('ko').canvasLabel).toBe('노출 세 요소 Canvas 미리보기');
+    expect(getTranslation('en').canvasLabel).toBe('Exposure triangle canvas preview');
+  });
 });

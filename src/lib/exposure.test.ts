@@ -5,6 +5,7 @@ import {
   getApertureBlur,
   getShutterMotionBlurSettings,
   getIsoNoiseSettings,
+  getMeterAriaValue,
 } from './exposure';
 
 describe('exposure calculations', () => {
@@ -24,6 +25,12 @@ describe('exposure calculations', () => {
     expect(getExposureStatus(0.4).label).toBe('正常曝光');
     expect(getExposureStatus(1.5).label).toBe('过曝');
     expect(getExposureStatus(3.2).label).toBe('严重过曝');
+  });
+
+  it('clamps the aria meter value to the visible meter range', () => {
+    expect(getMeterAriaValue(-12)).toBe(-4);
+    expect(getMeterAriaValue(0.75)).toBe(0.75);
+    expect(getMeterAriaValue(12)).toBe(4);
   });
 });
 

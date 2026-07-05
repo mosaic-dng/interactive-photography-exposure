@@ -69,9 +69,7 @@ Runtime assets live in `public/assets/`:
 
 ```text
 public/assets/background.png
-public/assets/cat_reference.jpg
 public/assets/manbo.png
-public/assets/manbo_bike.png
 public/assets/manbo_bike_2.png
 ```
 

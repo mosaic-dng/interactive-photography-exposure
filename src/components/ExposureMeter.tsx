@@ -1,5 +1,10 @@
 import { Tag } from 'animal-island-ui';
-import { calculateExposureEV, clampEVForMeter, getExposureStatus } from '../lib/exposure';
+import {
+  calculateExposureEV,
+  clampEVForMeter,
+  getExposureStatus,
+  getMeterAriaValue,
+} from '../lib/exposure';
 import type { getTranslation } from '../lib/i18n';
 import type { CameraSettings } from '../types';
 
@@ -41,7 +46,7 @@ export function ExposureMeter({ settings, translation }: ExposureMeterProps) {
         role="meter"
         aria-valuemin={-4}
         aria-valuemax={4}
-        aria-valuenow={ev}
+        aria-valuenow={getMeterAriaValue(ev)}
       >
         <span className="meter-zone under">{translation.meter.under}</span>
         <span className="meter-zone normal">{translation.meter.normal}</span>
