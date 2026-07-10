@@ -29,6 +29,8 @@ export function ControlPanel({ settings, mode, translation, onChange }: ControlP
     <Card className="control-card" pattern="default">
       <div className="control-stack">
         <SliderControl
+          controlId="aperture-control"
+          ariaValueText={formatAperture(settings.aperture)}
           label={controls.apertureLabel}
           value={formatAperture(settings.aperture)}
           min={0}
@@ -41,6 +43,8 @@ export function ControlPanel({ settings, mode, translation, onChange }: ControlP
           onInput={(index) => onChange({ ...settings, aperture: APERTURE_STOPS[index] })}
         />
         <SliderControl
+          controlId="shutter-control"
+          ariaValueText={formatShutterSpeed(settings.shutterSeconds)}
           label={controls.shutterLabel}
           value={formatShutterSpeed(settings.shutterSeconds)}
           min={0}
@@ -53,6 +57,8 @@ export function ControlPanel({ settings, mode, translation, onChange }: ControlP
           onInput={(index) => onChange({ ...settings, shutterSeconds: SHUTTER_STOPS[index].value })}
         />
         <SliderControl
+          controlId="iso-control"
+          ariaValueText={`ISO ${settings.iso}`}
           label={controls.isoLabel}
           value={String(settings.iso)}
           min={0}
@@ -72,6 +78,8 @@ export function ControlPanel({ settings, mode, translation, onChange }: ControlP
 }
 
 interface SliderControlProps {
+  controlId: string;
+  ariaValueText: string;
   label: string;
   value: string;
   min: number;
@@ -85,6 +93,8 @@ interface SliderControlProps {
 }
 
 function SliderControl({
+  controlId,
+  ariaValueText,
   label,
   value,
   min,
@@ -100,9 +110,9 @@ function SliderControl({
   const canStepUp = index < max;
 
   return (
-    <label className="slider-control">
+    <div className="slider-control">
       <span className="slider-row">
-        <span>{label}</span>
+        <label htmlFor={controlId}>{label}</label>
         <strong>{value}</strong>
       </span>
       <span className="range-row">
@@ -117,11 +127,13 @@ function SliderControl({
           -
         </Button>
         <input
+          id={controlId}
           type="range"
           min={min}
           max={max}
           step={step}
           value={index}
+          aria-valuetext={ariaValueText}
           onChange={(event) => onInput(Number(event.currentTarget.value))}
         />
         <Button
@@ -136,7 +148,7 @@ function SliderControl({
         </Button>
       </span>
       <span className="slider-description">{description}</span>
-    </label>
+    </div>
   );
 }
 
