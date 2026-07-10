@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import {
+  drawApertureBackground,
   getApertureBlurStrategy,
   getPortableBlurScale,
   SCENE_SUBJECT_LAYOUT,
@@ -31,6 +32,34 @@ describe('aperture blur strategy', () => {
 
     expect(scale).toBeGreaterThanOrEqual(0.12);
     expect(scale).toBeLessThanOrEqual(0.2);
+  });
+
+  it('draws a zero-blur background sharply and restores the existing filter', () => {
+    let filterAtDraw: string | undefined;
+    let currentFilter: string | undefined = 'blur(8px)';
+    const savedFilters: Array<string | undefined> = [];
+    const context = {
+      get filter() {
+        return currentFilter;
+      },
+      set filter(value: string | undefined) {
+        currentFilter = value;
+      },
+      save() {
+        savedFilters.push(currentFilter);
+      },
+      drawImage() {
+        filterAtDraw = currentFilter;
+      },
+      restore() {
+        currentFilter = savedFilters.pop();
+      },
+    } as unknown as CanvasRenderingContext2D;
+
+    drawApertureBackground(context, {} as HTMLCanvasElement, 0);
+
+    expect(filterAtDraw).toBe('none');
+    expect(context.filter).toBe('blur(8px)');
   });
 });
 

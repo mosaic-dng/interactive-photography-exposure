@@ -96,7 +96,7 @@ function drawUnifiedBackground(
   drawApertureBackground(ctx, background, blur);
 }
 
-function drawApertureBackground(
+export function drawApertureBackground(
   ctx: CanvasRenderingContext2D,
   background: HTMLCanvasElement,
   blur: number,
@@ -104,7 +104,10 @@ function drawApertureBackground(
   const strategy = getApertureBlurStrategy(ctx.filter, blur);
 
   if (strategy === 'none') {
+    ctx.save();
+    if (typeof ctx.filter === 'string') ctx.filter = 'none';
     ctx.drawImage(background, 0, 0);
+    ctx.restore();
     return;
   }
 
