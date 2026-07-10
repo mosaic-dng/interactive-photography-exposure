@@ -9,6 +9,30 @@ import {
 export const CANVAS_WIDTH = 1280;
 export const CANVAS_HEIGHT = 720;
 
+export function createBackgroundSourceCache<TImage extends object, TSource>() {
+  const imageSources = new WeakMap<TImage, TSource>();
+  let generatedSource: TSource | undefined;
+
+  return {
+    get(image: TImage | undefined, create: (image?: TImage) => TSource) {
+      if (image === undefined) {
+        if (generatedSource !== undefined) return generatedSource;
+        generatedSource = create();
+        return generatedSource;
+      }
+
+      const cached = imageSources.get(image);
+      if (cached !== undefined) return cached;
+
+      const source = create(image);
+      imageSources.set(image, source);
+      return source;
+    },
+  };
+}
+
+const backgroundSourceCache = createBackgroundSourceCache<HTMLImageElement, HTMLCanvasElement>();
+
 export type ApertureBlurStrategy = 'none' | 'native' | 'portable';
 
 export function getApertureBlurStrategy(
@@ -73,11 +97,16 @@ function drawUnifiedBackground(
   blur: number,
   backgroundImage?: HTMLImageElement,
 ) {
+  const background = backgroundSourceCache.get(backgroundImage, createUnifiedBackground);
+  drawApertureBackground(ctx, background, blur);
+}
+
+function createUnifiedBackground(backgroundImage?: HTMLImageElement) {
   const background = document.createElement('canvas');
   background.width = CANVAS_WIDTH;
   background.height = CANVAS_HEIGHT;
   const bg = background.getContext('2d');
-  if (!bg) return;
+  if (!bg) return background;
 
   if (backgroundImage) {
     drawCoverImage(bg, backgroundImage, 0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
@@ -93,7 +122,7 @@ function drawUnifiedBackground(
     drawFlowersAndGrass(bg);
   }
 
-  drawApertureBackground(ctx, background, blur);
+  return background;
 }
 
 export function drawApertureBackground(

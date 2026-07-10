@@ -1,10 +1,23 @@
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import {
+  createBackgroundSourceCache,
   drawApertureBackground,
   getApertureBlurStrategy,
   getPortableBlurScale,
   SCENE_SUBJECT_LAYOUT,
 } from './canvasRenderer';
+
+describe('background source cache', () => {
+  it('reuses unchanged image and generated background sources', () => {
+    const cache = createBackgroundSourceCache<object, object>();
+    const create = vi.fn((image?: object) => ({ image }));
+    const image = {};
+
+    expect(cache.get(image, create)).toBe(cache.get(image, create));
+    expect(cache.get(undefined, create)).toBe(cache.get(undefined, create));
+    expect(create).toHaveBeenCalledTimes(2);
+  });
+});
 
 describe('aperture blur strategy', () => {
   it('uses native blur when canvas filters are available', () => {
