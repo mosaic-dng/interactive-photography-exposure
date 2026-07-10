@@ -9,6 +9,21 @@ import {
 export const CANVAS_WIDTH = 1280;
 export const CANVAS_HEIGHT = 720;
 
+export type ApertureBlurStrategy = 'none' | 'native' | 'portable';
+
+export function getApertureBlurStrategy(
+  canvasFilter: string | undefined,
+  blur: number,
+): ApertureBlurStrategy {
+  if (blur <= 0) return 'none';
+  return typeof canvasFilter === 'string' ? 'native' : 'portable';
+}
+
+export function getPortableBlurScale(blur: number) {
+  if (blur <= 0) return 1;
+  return Math.max(0.12, 1 / (1 + blur * 0.44));
+}
+
 export const SCENE_SUBJECT_LAYOUT = {
   standing: {
     box: {
@@ -78,9 +93,48 @@ function drawUnifiedBackground(
     drawFlowersAndGrass(bg);
   }
 
+  drawApertureBackground(ctx, background, blur);
+}
+
+function drawApertureBackground(
+  ctx: CanvasRenderingContext2D,
+  background: HTMLCanvasElement,
+  blur: number,
+) {
+  const strategy = getApertureBlurStrategy(ctx.filter, blur);
+
+  if (strategy === 'none') {
+    ctx.drawImage(background, 0, 0);
+    return;
+  }
+
+  if (strategy === 'native') {
+    ctx.save();
+    ctx.filter = `blur(${blur}px)`;
+    ctx.drawImage(background, 0, 0);
+    ctx.restore();
+    return;
+  }
+
   ctx.save();
-  ctx.filter = blur > 0 ? `blur(${blur}px)` : 'none';
-  ctx.drawImage(background, 0, 0);
+  const scale = getPortableBlurScale(blur);
+  const downscaled = document.createElement('canvas');
+  downscaled.width = Math.max(1, Math.round(CANVAS_WIDTH * scale));
+  downscaled.height = Math.max(1, Math.round(CANVAS_HEIGHT * scale));
+  const downscaledContext = downscaled.getContext('2d');
+
+  if (!downscaledContext) {
+    ctx.drawImage(background, 0, 0);
+    ctx.restore();
+    return;
+  }
+
+  downscaledContext.imageSmoothingEnabled = true;
+  downscaledContext.imageSmoothingQuality = 'high';
+  downscaledContext.drawImage(background, 0, 0, downscaled.width, downscaled.height);
+  ctx.imageSmoothingEnabled = true;
+  ctx.imageSmoothingQuality = 'high';
+  ctx.drawImage(downscaled, 0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
   ctx.restore();
 }
 
